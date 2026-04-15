@@ -1,0 +1,17 @@
+{
+  "name": "example",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Demo Cordova app for inertial events plugin",
+  "cordova": {
+    "platforms": [
+      "android"
+    ],
+    "plugins": {
+      "cordova-mrm-safety": {
+        "INERTIAL_EVENTS_VERSION": "1.4.0",
+        "INERTIAL_EVENTS_MAVEN_REPO": "https://repo.situm.es/artifactory/libs-release-local"
+      }
+    }
+  }
+}

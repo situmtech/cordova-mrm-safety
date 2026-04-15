@@ -1,0 +1,20 @@
+{
+  "name": "cordova-mrm-safety",
+  "version": "0.1.0",
+  "description": "Cordova wrapper for Android inertial events detection",
+  "cordova": {
+    "id": "cordova-mrm-safety",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "cordova",
+    "android",
+    "inertial",
+    "tap",
+    "fall",
+    "inactivity"
+  ],
+  "license": "MIT"
+}

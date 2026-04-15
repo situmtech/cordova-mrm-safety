@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Inertial Demo</title>
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <h1>Inertial Events Demo</h1>
+
+    <div class="section">
+      <strong>Situm status</strong>
+      <div class="status-row">
+        <span class="status-label">Positioning</span>
+        <span id="positioningStatusDot" class="status-dot status-gray"></span>
+        <span id="positioningStatusText">stopped</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <strong>Situm login</strong>
+      <label>Email <input id="situmEmail" type="email" /></label>
+      <label>Password <input id="situmPassword" type="password" /></label>
+      <label>Building identifier (optional) <input id="buildingIdentifier" type="text" /></label>
+      <div class="row">
+        <button id="situmLogin">Login</button>
+        <button id="startPositioning">Start Positioning</button>
+        <button id="stopPositioning">Stop Positioning</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <label>
+        Background mode
+        <select id="backgroundMode">
+          <option value="off" selected>off</option>
+          <option value="on">on</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="section">
+      <strong>Tap detector</strong>
+      <label>Taps <input id="tapTaps" type="number" min="1" max="10" value="3" /></label>
+      <label>Sensitivity <input id="tapSensitivity" type="range" min="0" max="10" step="1" value="8" /></label>
+      <div class="row">
+        <button id="startTap">Start Tap</button>
+        <button id="stopTap">Stop Tap</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <strong>Fall detector</strong>
+      <label>Sensitivity <input id="fallSensitivity" type="range" min="0" max="1" step="0.01" value="0.5" /></label>
+      <label>Lie Time (s) <input id="fallLieTime" type="number" min="10" max="120" value="30" /></label>
+      <div class="row">
+        <button id="startFall">Start Fall</button>
+        <button id="stopFall">Stop Fall</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <strong>Inactivity detector</strong>
+      <label>Sensitivity <input id="inactivitySensitivity" type="range" min="0.1" max="3" step="0.01" value="0.5" /></label>
+      <label>Idle Time (s) <input id="inactivityIdleTime" type="number" min="5" max="600" value="30" /></label>
+      <label>
+        Ignore horizontal
+        <select id="ignoreHorizontal">
+          <option value="true" selected>true</option>
+          <option value="false">false</option>
+        </select>
+      </label>
+      <div class="row">
+        <button id="startInactivity">Start Inactivity</button>
+        <button id="stopInactivity">Stop Inactivity</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="row">
+        <button id="stopAll">Stop All</button>
+        <button id="clearLog">Clear Log</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <strong>Event log</strong>
+      <div id="log"></div>
+    </div>
+
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="cordova-mrm-safety"
+    version="0.1.0">
+
+    <name>Inertial Events</name>
+    <description>Cordova wrapper for Android inertial events detection</description>
+    <license>MIT</license>
+
+    <preference name="INERTIAL_EVENTS_VERSION" default="1.4.0" />
+    <preference name="INERTIAL_EVENTS_MAVEN_REPO" default="https://repo.situm.es/artifactory/libs-release-local" />
+
+    <engines>
+        <engine name="cordova-android" version=">=12.0.0" />
+    </engines>
+
+    <js-module src="www/inertialEvents.js" name="InertialEvents">
+        <clobbers target="window.InertialEvents" />
+    </js-module>
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="InertialEventsPlugin">
+                <param name="android-package" value="com.situm.cordova.inertial.InertialEventsPlugin" />
+            </feature>
+        </config-file>
+
+        <framework src="src/android/inertial-events.gradle" custom="true" type="gradleReference" />
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.HIGH_SAMPLING_RATE_SENSORS" />
+            <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+            <uses-permission android:name="android.permission.FOREGROUND_SERVICE_HEALTH" />
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <service
+                android:name="com.situm.cordova.inertial.DetectionForegroundService"
+                android:enabled="true"
+                android:exported="false"
+                android:foregroundServiceType="health"
+                android:stopWithTask="true" />
+        </config-file>
+
+        <source-file src="src/android/InertialEventsPlugin.java" target-dir="src/com/situm/cordova/inertial" />
+        <source-file src="src/android/DetectionForegroundService.java" target-dir="src/com/situm/cordova/inertial" />
+    </platform>
+</plugin>
