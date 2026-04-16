@@ -45,7 +45,7 @@ cordova plugin add @situm/cordova
 2. Install this plugin (Artifactory-backed dependency resolution):
 
 ```bash
-cordova plugin add ../cordova-mrm-safety \
+cordova plugin add ./ \
   --variable INERTIAL_EVENTS_VERSION=1.4.0 \
   --variable INERTIAL_EVENTS_MAVEN_REPO=https://repo.situm.es/artifactory/libs-release-local
 ```
@@ -65,32 +65,34 @@ The plugin defaults already point to:
 Recommended order: start Situm positioning first, then start inertial detectors.
 
 ```js
-cordova.plugins.Situm.setUserPass(email, password)
-cordova.plugins.Situm.requestLocationUpdates({ buildingIdentifier: "YOUR_BUILDING_ID" })
+cordova.plugins.Situm.setUserPass(email, password);
+cordova.plugins.Situm.requestLocationUpdates({
+  buildingIdentifier: "YOUR_BUILDING_ID",
+});
 
 window.InertialEvents.onEvent((event) => {
   // event.type: "tap" | "fall" | "inactivity" | "error"
   // event.timestamp: epoch millis
-  console.log("Inertial event", event)
-})
+  console.log("Inertial event", event);
+});
 
-window.InertialEvents.startTap({ taps: 3, sensitivity: 8 })
-window.InertialEvents.startFall({ sensitivity: 0.5, lieTimeSec: 30 })
+window.InertialEvents.startTap({ taps: 3, sensitivity: 8 });
+window.InertialEvents.startFall({ sensitivity: 0.5, lieTimeSec: 30 });
 window.InertialEvents.startInactivity({
   sensitivity: 0.5,
   idleTimeSec: 30,
   ignoreHorizontal: true,
-})
+});
 ```
 
 To stop:
 
 ```js
-window.InertialEvents.stopTap()
-window.InertialEvents.stopFall()
-window.InertialEvents.stopInactivity()
-window.InertialEvents.stopAll()
-cordova.plugins.Situm.removeUpdates()
+window.InertialEvents.stopTap();
+window.InertialEvents.stopFall();
+window.InertialEvents.stopInactivity();
+window.InertialEvents.stopAll();
+cordova.plugins.Situm.removeUpdates();
 ```
 
 ## Important behavior
@@ -102,14 +104,14 @@ Detectors may be running, but inertial callbacks are emitted only while Situm po
 Enable background inertial detection:
 
 ```js
-window.InertialEvents.enableBackground()
+window.InertialEvents.enableBackground();
 // then startTap/startFall/startInactivity
 ```
 
 Disable background mode:
 
 ```js
-window.InertialEvents.disableBackground()
+window.InertialEvents.disableBackground();
 ```
 
 Notes:

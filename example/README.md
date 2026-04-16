@@ -32,26 +32,42 @@ Validate this end-to-end flow:
 - Android SDK + JDK
 - Access to Artifactory repository hosting `es.situm:inertial-events-detection:1.4.0` in `libs-release-local`
 
+## Recommended folder structure
+
+Create the host Cordova app **outside** this plugin repository.
+
+```text
+/Users/you/repos/
+  cordova-mrm-safety/        # this plugin repo
+  inertial-example-app/      # host Cordova app (separate folder)
+```
+
+Do not create the host app inside `cordova-mrm-safety` (for example `cordova-mrm-safety/example-app`),
+because local plugin installation can fail with copy/subdirectory recursion errors.
+
 ## Step-by-step setup (from scratch)
 
-1. Create a Cordova app:
+1. Create a Cordova app in a separate folder:
 
 ```bash
-cordova create example-app com.situm.inertial.demo InertialEventsDemo
-cd example-app
+mkdir -p /Users/you/repos/inertial-example-app
+cd /Users/you/repos/inertial-example-app
+cordova create . com.situm.inertial.demo InertialEventsDemo
 cordova platform add android
 ```
 
-2. Copy this example web content:
+2. Copy this example web content from the plugin repository:
 
-- `../example/www/*` -> `www/`
-- `../example/config.xml` -> `config.xml`
+```bash
+cp -R /Users/you/repos/cordova-mrm-safety/example/www/* ./www/
+cp /Users/you/repos/cordova-mrm-safety/example/config.xml ./config.xml
+```
 
 3. Install plugins:
 
 ```bash
 cordova plugin add @situm/cordova
-cordova plugin add ../cordova-mrm-safety \
+cordova plugin add /Users/you/repos/cordova-mrm-safety \
   --variable INERTIAL_EVENTS_VERSION=1.4.0 \
   --variable INERTIAL_EVENTS_MAVEN_REPO=https://repo.situm.es/artifactory/libs-release-local
 ```
