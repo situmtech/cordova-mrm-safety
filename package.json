@@ -1,5 +1,12 @@
 {
-  "name": "cordova-mrm-safety",
+  "name": "@situm/cordova-mrm-safety",
+  "files": [
+    "plugin.xml",
+    "src",
+    "www",
+    "README.md",
+    "LICENSE"
+  ],
   "version": "0.1.0",
   "description": "Cordova wrapper for Android inertial events detection",
   "cordova": {
