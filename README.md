@@ -123,7 +123,13 @@ Notes:
 
 ## Versioning
 
-This package is uploaded to npm as @situm/cordova-mrm-safety. To upload a new version, first make sure to update the "version" parameter at the package.json of the plugin so npm detects is a new version. Then, execute the following commands:
+This package is uploaded to npm as @situm/cordova-mrm-safety. To upload a new version, first make sure to update the "version" parameter at the package.json of the plugin so npm detects is a new version. You can update the plugin version by executing the command:
+
+```bash
+npm version patch # To upgrade the patch number of the version
+```
+
+Then, execute the following commands:
 
 ```bash
 npm login # Login with the mobile account
