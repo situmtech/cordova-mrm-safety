@@ -1,5 +1,17 @@
 {
   "name": "@situm/cordova-mrm-safety",
+  "version": "0.1.0",
+  "description": "Cordova wrapper for Android inertial events detection",
+  "private": false,
+  "repository": "https://github.com/situmtech/cordova-mrm-safety",
+  "author": "Situm Technologies <mobile@situm.com>",
+  "bugs": {
+    "url": "https://github.com/situmtech/cordova-mrm-safety/issues"
+  },
+  "homepage": "https://github.com/situmtech/cordova-mrm-safety#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "files": [
     "plugin.xml",
     "src",
@@ -7,10 +19,8 @@
     "README.md",
     "LICENSE"
   ],
-  "version": "0.1.0",
-  "description": "Cordova wrapper for Android inertial events detection",
   "cordova": {
-    "id": "cordova-mrm-safety",
+    "id": "@situm/cordova-mrm-safety",
     "platforms": [
       "android"
     ]

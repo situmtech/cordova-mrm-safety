@@ -1,11 +1,7 @@
-def inertialVersion = project.hasProperty("INERTIAL_EVENTS_VERSION") ?
-    project.property("INERTIAL_EVENTS_VERSION") : "1.4.0"
-
-def inertialRepo = project.hasProperty("INERTIAL_EVENTS_MAVEN_REPO") ?
-    project.property("INERTIAL_EVENTS_MAVEN_REPO") : "https://repo.situm.es/artifactory/libs-release-local"
+def inertialVersion = "1.4.0"
 
 repositories {
-    maven { url inertialRepo }
+    maven { url "https://repo.situm.es/artifactory/libs-release-local" }
     google()
     mavenCentral()
 }
