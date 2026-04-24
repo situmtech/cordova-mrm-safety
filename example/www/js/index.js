@@ -191,9 +191,13 @@ document.addEventListener("deviceready", function () {
   window.InertialEvents.onEvent(function (event) {
     if (event.type === "error") {
       log("Inertial error: " + event.message);
+      console.log("Inertial error: " + event.message);
+      alert("Inertial error: " + event.message);
       return;
     }
     log("Inertial event: " + event.type + " @" + event.timestamp);
+    console.log("Inertial event: " + event.type + " @" + event.timestamp);
+    alert("Inertial event: " + event.type);
     vibrateOnInertialEvent();
   });
 
