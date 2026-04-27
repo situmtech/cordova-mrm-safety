@@ -114,9 +114,9 @@ When you add this plugin, the following permissions will be automatically added 
 <uses-permission android:name="android.permission.HIGH_SAMPLING_RATE_SENSORS" />
 <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 <uses-permission android:name="android.permission.FOREGROUND_SERVICE_HEALTH" />
+```
 
 You don't need to require in runtime the before mentioned permissions as they are granted at install time.
-
 
 Enable background inertial detection:
 
