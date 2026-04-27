@@ -93,7 +93,42 @@ cordova.plugins.Situm.removeUpdates();
 
 Detectors may be running, but inertial callbacks are emitted only while Situm positioning is running (`LocationManager.isRunning() == true`).
 
-## Background mode
+## Background Mode
+In order to keep detecting these emergencies events, even when the app is in background or the screen is off, you need to enable the **Background Mode**:
+> ![NOTE]:
+> This Background Mode launches a Foreground Service of type health.
+> We use this Foreground Service in order to keep detecting these emergencies events that users may need to report even when the app is in background or the screen is off.
+> The following android permissions will be introduced in your AndroidManifest.xml automatically after adding this plugin:
+>```xml
+> <uses-permission android:name="android.permission.HIGH_SAMPLING_RATE_SENSORS" />
+> <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+> <uses-permission android:name="android.permission.FOREGROUND_SERVICE_HEALTH" />
+>```
+
+## Background Mode
+
+To continue detecting emergency events even when the app is in the background, the screen is off, or the app has been minimized, you must enable **Background Mode**.
+
+### What does Background Mode do?
+
+This mode starts a **Foreground Service of type `health`**.
+
+Foreground Services are designed to perform ongoing operations that the user should be aware of. They display a persistent notification, giving the service higher priority so it can reliably detect emergency events in the background.
+
+> **Important Note**  
+> This Foreground Service is used exclusively to detect potential emergencies that users may need to report, even when the app is not actively in use.
+
+### Permissions added automatically
+
+When you add this plugin, the following permissions will be automatically added to your `AndroidManifest.xml`:
+
+```xml
+<uses-permission android:name="android.permission.HIGH_SAMPLING_RATE_SENSORS" />
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE_HEALTH" />
+
+You don't need to require in runtime the before mentioned permissions as they are granted at install time.
+
 
 Enable background inertial detection:
 

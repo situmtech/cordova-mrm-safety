@@ -8,12 +8,12 @@
       "android"
     ],
     "plugins": {
-      "cordova-mrm-safety": {},
-      "@situm/cordova": {}
+      "@situm/cordova": {},
+      "@situm/cordova-mrm-safety": {}
     }
   },
-  "devDependencies": {
-    "@situm/cordova": "^3.15.52",
-    "@situm/cordova-mrm-safety": "^0.1.0"
+  "dependencies": {
+    "@situm/cordova": "3.15.52",
+    "@situm/cordova-mrm-safety": "0.1.0"
   }
 }
