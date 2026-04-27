@@ -103,7 +103,7 @@ This mode starts a **Foreground Service of type `health`**.
 
 Foreground Services are designed to perform ongoing operations that the user should be aware of. They display a persistent notification, giving the service higher priority so it can reliably detect emergency events in the background.
 
-> **Important Note**  
+> [!IMPORTANT]  
 > This Foreground Service is used exclusively to detect potential emergencies that users may need to report, even when the app is not actively in use.
 
 ### Permissions added automatically
