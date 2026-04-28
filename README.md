@@ -70,6 +70,8 @@ window.InertialEvents.onEvent((event) => {
   console.log("Inertial event", event);
 });
 
+window.InertialEvents.enableBackground();
+
 window.InertialEvents.startTap({ taps: 3, sensitivity: 8 });
 window.InertialEvents.startFall({ sensitivity: 0.5, lieTimeSec: 30 });
 window.InertialEvents.startInactivity({
