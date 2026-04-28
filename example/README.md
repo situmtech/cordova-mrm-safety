@@ -12,9 +12,13 @@ including login, positioning, inertial detection events and background behavior.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 ![Cordova](https://img.shields.io/badge/Cordova-Android-blueviolet)
-![Example](https://img.shields.io/badge/type-example-blue)
 
 </div>
+
+Main Screen                |  Emergency event dialog   |  Logs screen
+:-------------------------:|:-------------------------:|:-------------------------:
+![](./doc/screenshots/1.jpeg)|![](./doc/screenshots/2.jpeg)|![](./doc/screenshots/3.jpeg)
+This is the main scren that you should see when your first enter. With this screen you can login, start the positioning system, start inertial events detection and see the logs.| This is the dialog that you should see when reproducing any inertial event with your device (after pressing Start Tap/Start Fall/Start Inactivity).|The logs screen will help you troubleshoot any problems that you might face when not following the expected method call flow.
 
 ## Goal
 
