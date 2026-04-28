@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="cordova-mrm-safety"
+    id="@situm/cordova-mrm-safety"
     version="0.1.0">
 
     <name>Inertial Events</name>
     <description>Cordova wrapper for Android inertial events detection</description>
     <license>MIT</license>
-
-    <preference name="INERTIAL_EVENTS_VERSION" default="1.4.0" />
-    <preference name="INERTIAL_EVENTS_MAVEN_REPO" default="https://repo.situm.es/artifactory/libs-release-local" />
 
     <engines>
         <engine name="cordova-android" version=">=12.0.0" />

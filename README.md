@@ -12,7 +12,7 @@ designed to work together with active Situm positioning.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 ![Cordova](https://img.shields.io/badge/Cordova-Android-blueviolet)
-![Version](https://img.shields.io/badge/version-1.4.0-blue)
+![Latest version:](https://img.shields.io/npm/v/@situm/react-native/latest)
 
 </div>
 
@@ -45,9 +45,7 @@ cordova plugin add @situm/cordova
 2. Install this plugin (Artifactory-backed dependency resolution):
 
 ```bash
-cordova plugin add ./ \
-  --variable INERTIAL_EVENTS_VERSION=1.4.0 \
-  --variable INERTIAL_EVENTS_MAVEN_REPO=https://repo.situm.es/artifactory/libs-release-local
+cordova plugin add @situm/cordova-mrm-safety
 ```
 
 3. Build Android:
@@ -55,10 +53,6 @@ cordova plugin add ./ \
 ```bash
 cordova build android
 ```
-
-The plugin defaults already point to:
-
-`https://repo.situm.es/artifactory/libs-release-local`
 
 ## Minimal usage
 
@@ -75,6 +69,8 @@ window.InertialEvents.onEvent((event) => {
   // event.timestamp: epoch millis
   console.log("Inertial event", event);
 });
+
+window.InertialEvents.enableBackground();
 
 window.InertialEvents.startTap({ taps: 3, sensitivity: 8 });
 window.InertialEvents.startFall({ sensitivity: 0.5, lieTimeSec: 30 });
@@ -99,7 +95,30 @@ cordova.plugins.Situm.removeUpdates();
 
 Detectors may be running, but inertial callbacks are emitted only while Situm positioning is running (`LocationManager.isRunning() == true`).
 
-## Background mode
+## Background Mode
+
+To continue detecting emergency events even when the app is in the background, the screen is off, or the app has been minimized, you must enable **Background Mode**.
+
+### What does Background Mode do?
+
+This mode starts a **Foreground Service of type `health`**.
+
+Foreground Services are designed to perform ongoing operations that the user should be aware of. They display a persistent notification, giving the service higher priority so it can reliably detect emergency events in the background.
+
+> [!IMPORTANT]  
+> This Foreground Service is used exclusively to detect potential emergencies that users may need to report, even when the app is not actively in use.
+
+### Permissions added automatically
+
+When you add this plugin, the following permissions will be automatically added to your `AndroidManifest.xml`:
+
+```xml
+<uses-permission android:name="android.permission.HIGH_SAMPLING_RATE_SENSORS" />
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE_HEALTH" />
+```
+
+You don't need to require in runtime the before mentioned permissions as they are granted at install time.
 
 Enable background inertial detection:
 
@@ -121,14 +140,27 @@ Notes:
 
 ## Troubleshooting
 
-1. Dependency resolution errors from Artifactory
-   - Verify `INERTIAL_EVENTS_VERSION` and `INERTIAL_EVENTS_MAVEN_REPO` values.
-
-2. No inertial events are received
+1. No inertial events are received
    - Verify Situm login succeeded and `requestLocationUpdates(...)` is active.
 
-3. Android permission errors
+2. Android permission errors
    - Grant runtime location/BLE permissions.
+
+## Versioning
+
+This package is uploaded to npm as @situm/cordova-mrm-safety. To upload a new version, first make sure to update the "version" parameter at the package.json of the plugin so npm detects is a new version. You can update the plugin version by executing the command:
+
+```bash
+npm version patch # To upgrade the patch number of the version
+```
+
+Then, execute the following commands:
+
+```bash
+npm login # Login with the mobile account
+npm pack --dry-run # To check out what will be pushed before actually uploading a new version
+npm publish
+```
 
 ---
 

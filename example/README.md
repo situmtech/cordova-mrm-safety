@@ -4,7 +4,7 @@
 </p>
 
 <p align="center" style="text-align:center">
-Reference Cordova app to validate `@situm/cordova` + `cordova-mrm-safety` integration,
+Reference Cordova app to validate `@situm/cordova` + `@situm/cordova-mrm-safety` integration,
 including login, positioning, inertial detection events and background behavior.
 </p>
 
@@ -30,7 +30,6 @@ Validate this end-to-end flow:
 - Node.js + npm
 - Cordova CLI (`npm i -g cordova`)
 - Android SDK + JDK
-- Access to Artifactory repository hosting `es.situm:inertial-events-detection:1.4.0` in `libs-release-local`
 
 ## Recommended folder structure
 
@@ -67,9 +66,7 @@ cp /Users/you/repos/cordova-mrm-safety/example/config.xml ./config.xml
 
 ```bash
 cordova plugin add @situm/cordova
-cordova plugin add /Users/you/repos/cordova-mrm-safety \
-  --variable INERTIAL_EVENTS_VERSION=1.4.0 \
-  --variable INERTIAL_EVENTS_MAVEN_REPO=https://repo.situm.es/artifactory/libs-release-local
+cordova plugin add @situm/cordova-mrm-safety
 ```
 
 4. Build and run:
@@ -120,13 +117,10 @@ Notes:
 
 ## Troubleshooting
 
-1. Artifactory dependency error
-   - Verify plugin variables used at install time (`INERTIAL_EVENTS_VERSION`, `INERTIAL_EVENTS_MAVEN_REPO`).
-
-2. No inertial events
+1. No inertial events
    - Verify Situm positioning is running (`Start Positioning` with no errors).
 
-3. Android runtime permission errors
+2. Android runtime permission errors
    - Grant location/BLE permissions.
 
 ---
